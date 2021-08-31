@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="">
+<link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+<link href="{% static "css/style.css" %}" rel="stylesheet">
+<link rel="stylesheet" href="{% static "izitoast/css/iziToast.min.css" %}">
+<link href="https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Roboto:200,300,400,500,600,700" rel="stylesheet">
+</head>
+<body>
+
+
+<!-- HEADER =============================-->
+<header class="item header margin-top-0">
+<div class="wrapper">
+	<nav role="navigation" class="navbar navbar-white navbar-embossed navbar-lg navbar-fixed-top">
+	<div class="container">
+		<div class="navbar-header">
+			<button data-target="#navbar-collapse-02" data-toggle="collapse" class="navbar-toggle" type="button">
+			<i class="fa fa-bars"></i>
+			<span class="sr-only">Toggle navigation</span>
+			</button>
+			<a href="" class="navbar-brand brand"> VISTAN NEXTGEN </a>
+		</div>
+		<div id="navbar-collapse-02" class="collapse navbar-collapse">
+			<ul class="nav navbar-nav navbar-right">
+				<li class="propClone"><a href="{% url 'App:head-create' %}">Head</a></li>
+				<li class="propClone"><a href="{% url 'App:listen-create' %}">Listening</a></li>
+				<li class="propClone"><a href="{% url 'App:home' %}">Conversation</a></li>
+				<li class="propClone"><a href="{% url 'App:all-details' %}">Default</a></li>
+				
+			</ul>
+		</div>
+	</div>
+	</nav>
+
+</div>
+</header>
+
+
+
+	
+	<!-- LATEST ITEMS =============================-->
+<section class="item content">
+	<div class="container">
+		<div class="underlined-title">
+			<div class="editContent">
+				<h1 class="text-center latestitems"></h1>
+			</div>
+			
+		</div>
+		<br><br>
+		
+	</div>
+</div>
+</section>
+
+
+
+
+
+<!-- AREA =============================-->
+<div class="item content">
+	<div class="container">
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8">
+                
+                <table class="table">
+            
+                    <tbody>
+                      <tr>
+                        
+                        <td>Conversation Type</td>
+                        <b>
+                            <td><b>{{service.service_name}} Conversation</b></td>
+                            <td><a href="{% url 'App:home' %}">Edit</a></td>
+                        </b>
+                   
+                      </tr>
+                      <tr>
+                        
+                        <td>Head Up time</td>
+                        <b>
+                            <td><b>{{head.up_time}} </b>Secs</td>
+                            <td><a href="{% url 'App:head-create' %}">Edit</a></td>
+
+                        </b>
+              
+                      </tr>
+                      <tr>
+                        
+                        <td>Head Down time</td>
+                        <td><b>{{head.down_time}}</b> Secs</td>
+                        <td><a href="{% url 'App:head-create' %}">Edit</a></td>
+
+              
+                      </tr>
+                      <tr>
+                        
+                        <td>Listening time</td>
+                        <td><b>{{listen.listening_time}} </b>Secs</td>
+                        <td><a href="{% url 'App:listen-create' %}">Edit</a></td>
+
+              
+                      </tr>
+                      
+                    </tbody>
+                  </table>
+
+            </div>
+            <div class="col-2"></div>
+
+
+        
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- SCRIPTS =============================-->
+<script src="{% static "js/jquery-.js" %}"></script>
+<script src="{% static "js/bootstrap.min.js" %}"></script>
+<script src="{% static "js/anim.js" %}"></script>
+<script src="{% static "izitoast/js/iziToast.min.js" %}"></script>
+<script>
+//----HOVER CAPTION---//	  
+jQuery(document).ready(function ($) {
+	$('.fadeshop').hover(
+		function(){
+			$(this).find('.captionshop').fadeIn(150);
+		},
+		function(){
+			$(this).find('.captionshop').fadeOut(150);
+		}
+	);
+});
+</script>
+
+
+{% if messages%}
+  <script>
+        iziToast.show({
+                        title: 'Yayy!',
+                        message: '{% for i in messages %}{{i}}{%endfor%}',
+                        position: 'topRight',
+                        color: 'green'
+                    });
+  </script>
+  {% endif %}
+	
+</body>
+</html>

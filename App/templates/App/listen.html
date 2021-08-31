@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="">
+<link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+<link href="{% static "css/style.css" %}" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Roboto:200,300,400,500,600,700" rel="stylesheet">
+</head>
+<body>
+
+
+<!-- HEADER =============================-->
+<header class="item header margin-top-0">
+<div class="wrapper">
+	<nav role="navigation" class="navbar navbar-white navbar-embossed navbar-lg navbar-fixed-top">
+	<div class="container">
+		<div class="navbar-header">
+			<button data-target="#navbar-collapse-02" data-toggle="collapse" class="navbar-toggle" type="button">
+			<i class="fa fa-bars"></i>
+			<span class="sr-only">Toggle navigation</span>
+			</button>
+			<a href="" class="navbar-brand brand"> VISTAN NEXTGEN </a>
+		</div>
+		<div id="navbar-collapse-02" class="collapse navbar-collapse">
+			<ul class="nav navbar-nav navbar-right">
+				<li class="propClone"><a href="{% url 'App:head-create' %}">Head</a></li>
+				<li class="propClone"><a href="{% url 'App:listen-create' %}">Listening</a></li>
+				<li class="propClone"><a href="{% url 'App:home' %}">Conversation</a></li>
+				<li class="propClone"><a href="{% url 'App:all-details' %}">Default</a></li>
+
+				
+			</ul>
+		</div>
+	</div>
+	</nav>
+
+</div>
+</header>
+
+
+
+	
+	<!-- LATEST ITEMS =============================-->
+<section class="item content">
+	<div class="container">
+		<div class="underlined-title">
+			<div class="editContent">
+				<h1 class="text-center latestitems"></h1>
+			</div>
+			
+		</div>
+		<br><br>
+		
+	</div>
+</div>
+</section>
+
+
+
+
+
+
+	<div class="container">
+    <!-- Default form subscription -->
+        <form class="text-center border border-light p-5" method = "POST">
+        {% csrf_token %}
+            <p class="h4 mb-4">Choose the Listening settings of Maira!</p><br>  
+
+            <input type="number" 
+                id="" 
+                class="form-control mb-4" 
+                placeholder="Enter listening time in seconds"
+                name = "listen_time">
+            <br>
+
+           
+            <button class="btn btn-success btn-block" type="submit">Submit</button>
+        </form>	
+	</div>
+
+
+
+
+
+<!-- SCRIPTS =============================-->
+<script src="{% static "js/jquery-.js" %}"></script>
+<script src="{% static "js/bootstrap.min.js" %}"></script>
+<script src="{% static "js/anim.js" %}"></script>
+<script>
+//----HOVER CAPTION---//	  
+jQuery(document).ready(function ($) {
+	$('.fadeshop').hover(
+		function(){
+			$(this).find('.captionshop').fadeIn(150);
+		},
+		function(){
+			$(this).find('.captionshop').fadeOut(150);
+		}
+	);
+});
+</script>
+	
+</body>
+</html>
