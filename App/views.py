@@ -1,9 +1,9 @@
 from typing import List, Set
 
 from django.http import request
-from App.serializers import HeadSerializer, ListenSerializer, SetServiceSerializer
+from App.serializers import HeadSerializer, ListenSerializer, SetServiceSerializer, LedSerializer
 from django.shortcuts import render, redirect
-from.models import Service, Listen, Head, SetService
+from.models import Led, Service, Listen, Head, SetService, Led
 
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -92,4 +92,19 @@ def listen_details(request):
 def service_details(request):
     data = SetService.objects.latest('pk')
     serializer = SetServiceSerializer(data, many = False)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def led_details(request):
+    data = Led.objects.latest('pk')
+    serializer = LedSerializer(data, many = False)
+    return Response(serializer.data)
+
+@api_view(['POST'])
+def led_post(request):
+    l = Led.objects.latest('pk')
+    serializer = LedSerializer(instance = l, data = request.POST)
+
+    if serializer.is_valid():
+        serializer.save()
     return Response(serializer.data)

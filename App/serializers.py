@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Head, Listen, Service, SetService
+from .models import Head, Listen, Service, SetService, Led
 
 class HeadSerializer(serializers.ModelSerializer):
     class Meta:
@@ -15,3 +15,8 @@ class SetServiceSerializer(serializers.ModelSerializer):
     class Meta:
         model = SetService
         fields = ('service_name', 'time')
+
+class LedSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Led
+        fields = ('status', 'time')

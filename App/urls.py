@@ -13,6 +13,8 @@ urlpatterns = [
 
     path('api/service', views.service_details, name = 'service-details'),
     path('api/head', views.head_details, name = 'head-details'),
-    path('api/listen', views.listen_details, name = 'listen-details')
+    path('api/listen', views.listen_details, name = 'listen-details'),
+    path('api/led', views.led_details, name = 'led-details'),
+    path('api/led-change', views.led_post, name = 'led-change'),
 ]
 

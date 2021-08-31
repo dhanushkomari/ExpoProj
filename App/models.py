@@ -64,3 +64,18 @@ class SetService(models.Model):
 
     def __str__(self):
         return self.service_name
+
+
+class Led(models.Model):
+    status  = models.BooleanField(default=True)
+    time = models.DecimalField(max_digits=30, decimal_places=3)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now = True)
+
+    class Meta:
+        ordering = ('-id',)
+        verbose_name = 'LED Setting'
+        verbose_name_plural = 'LED Settings'
+
+    def __str__(self):
+        return str(self.status)
