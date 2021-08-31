@@ -1,7 +1,7 @@
 from typing import List, Set
 
 from django.http import request
-from App.serializers import HeadSerializer, ListenSerializer, ServiceSerializer
+from App.serializers import HeadSerializer, ListenSerializer, SetServiceSerializer
 from django.shortcuts import render, redirect
 from.models import Service, Listen, Head, SetService
 
@@ -90,6 +90,6 @@ def listen_details(request):
 
 @api_view(['GET'])
 def service_details(request):
-    data = Service.objects.latest('pk')
-    serializer = ServiceSerializer(data, many = False)
+    data = SetService.objects.latest('pk')
+    serializer = SetServiceSerializer(data, many = False)
     return Response(serializer.data)
